@@ -1,4 +1,7 @@
+#!perl
+
 use strict;
+
 use Fcntl;
 use Errno qw(EINPROGRESS EALREADY EISCONN);
 use Socket;
@@ -62,10 +65,10 @@ sub parallel_connect {
     while (%socks) {
         while ( my ($host, $sockinfo) = each %socks ) {
             connect($sockinfo->{socket}, $sockinfo->{sockaddr})
-                and next; # let EISCONN below handle this (rare) race 'hazard'
+                and next; 
 
             if ($! == EINPROGRESS() || $! == EALREADY()) {
-                next; # still connecting
+                next; 
             }
 
             delete $socks{$host};
