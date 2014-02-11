@@ -1,4 +1,4 @@
 NON-Blocking-IO
 ===============
 
-non blocking i o socket interface
+perl script to check proxy asyncron
